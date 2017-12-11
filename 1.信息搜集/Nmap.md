@@ -43,6 +43,42 @@ nmap -p0 --packet-trace
 |UDP|17|
 
 ```bash
-nmap -p0,6,17,2 --packet-trace ... 
+
+nmap -p0,6,17,2 --packet-trace ..
+
+
+
 ```
+
 ##
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## 内网
+nmap --script  broadcast-dhcp-discover
+
+## DNS
+* dns信息扫描
+nmap --script dns-nsid 8.8.8.8  -p 53 -sSU
+* dns 服务发现，列表
+nmap --script broadcast-dns-service-discovery 
+* dns 递归查询是否可用
+nmap -sU -p 53 --script  dns-recursion 8.8.8.8
+* dns 域名暴力解析
+nmap --script dns-brute  guangu100.yuncdndun.com
+* dns 探测dns缓存记录
+ nmap --script dns-cache-snoop  8.8.8.8
+* dns 是否支持黑名单
+nmap -sn --script dns-blacklist  8.8.8.8
